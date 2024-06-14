@@ -262,15 +262,20 @@ function subStockEditView($param)
 			</tr>
 			<tr>
 				<th>ランク</th>
-				<td>
-					<?php
-					for ($i = 0; $i < 5; $i++) {
-					?>
-						<input type="radio" name="rank" value="<?php print $i + 1; ?>" <?php if ($param["rank"] == $i) print ' checked="checked"'; ?> /> <?php print fnRankName($i); ?>
-					<?php
+				<?php
+				if (!$param["stockNo"]) {
+					$param["rank"] = 1;
+				}
+				for ($i = 0; $i < 5; $i++) {
+					$check = '';
+					if (($param["rank"] - 1) == $i) {
+						$check = 'checked = "checked"';
 					}
-					?>
-				</td>
+				?>
+					<input type="radio" name="rank" value="<?php print $i + 1; ?>" <?php print $check; ?> /> <?php print fnRankName($i); ?>
+				<?php
+				}
+				?>
 			</tr>
 			<tr>
 				<th>物件名<span class="red">（必須）</span></th>
