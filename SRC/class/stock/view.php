@@ -132,7 +132,7 @@ function subStockView($param)
 			<table border="0" cellpadding="5" cellspacing="1">
 				<tr>
 					<th class="list_head">担当<?php fnOrder('CHARGE', 'stockSearch') ?></th>
-					<th class="list_head">ランク<?php fnOrder('RANK', 'stockSearch') ?></th>
+					<th class="list_head">ランク<?php fnOrder('`RANK`', 'stockSearch') ?></th>
 					<th class="list_head">日付<?php fnOrder('INSDT', 'stockSearch') ?></th>
 					<th class="list_head">物件名<?php fnOrder('ARTICLE', 'stockSearch') ?></th>
 					<th class="list_head">部屋<?php fnOrder('ROOM', 'stockSearch') ?></th>
@@ -201,7 +201,7 @@ function subStockView($param)
 
 
 //
-//仕入管理編集画面
+//仕入管理編集画面,仕入れ登録
 //
 function subStockEditView($param)
 {
@@ -262,20 +262,21 @@ function subStockEditView($param)
 			</tr>
 			<tr>
 				<th>ランク</th>
-				<?php
-				if (!$param["stockNo"]) {
-					$param["rank"] = 1;
-				}
-				for ($i = 0; $i < 5; $i++) {
-					$check = '';
-					if (($param["rank"] - 1) == $i) {
-						$check = 'checked = "checked"';
-					}
-				?>
-					<input type="radio" name="rank" value="<?php print $i + 1; ?>" <?php print $check; ?> /> <?php print fnRankName($i); ?>
-				<?php
-				}
-				?>
+				<td> <?php
+						if (!$param["stockNo"]) {
+							$param["rank"] = 1;
+						}
+						for ($i = 0; $i < 5; $i++) {
+							$check = '';
+							if (($param["rank"] - 1) == $i) {
+								$check = 'checked = "checked"';
+							}
+						?>
+						<input type="radio" name="rank" value="<?php print $i + 1; ?>" <?php print $check; ?> /> <?php print fnRankName($i); ?>
+					<?php
+						}
+					?>
+				</td>
 			</tr>
 			<tr>
 				<th>物件名<span class="red">（必須）</span></th>
