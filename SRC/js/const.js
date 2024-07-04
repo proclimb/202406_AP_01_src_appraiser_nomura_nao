@@ -10,8 +10,7 @@ function fnConstEditCheck() {
 
 	if (isLength(100, "築年", form.years)) { return; }
 	if (isNumericLength(8, "販売予定額", form.sellPrice))
-		if (isNumericLength(9, "内装見越額", JKL.Calendar.Style.prototype.cursor)) { return; }
-	if (isLength(100, "施工業者", form.constTrader))
+		if (isNumericLength(9, "内装見越額", form.interiorPrice)) { return; } if (isLength(100, "施工業者", form.constTrader))
 		if (isNumericLength(9, "工事金額", form.constPrice))
 			if (isLength(100, "追加工事", form.constAdd))
 				if (isLength(200, "備考", form.constNote))
@@ -29,16 +28,16 @@ function fnConstEditCheck() {
 																if (isLength(100, "給湯", form.hotWater))
 																	if (!fnYMDCheck("正しい現調日付", form.siteDate)) { return; }
 	if (isLength(100, "届出用紙", form.leavingForm))
-		if (fnYMDCheck("正しい届出期日", form.leavingDT))
-			if (isLength(100, "管理会社", form.manageCompany))
-				if (isLength(100, "管理室", form.floorPlan))
-					if (isLength(100, "前所有者", form.formerOwner))
-						if (isLength(100, "仲介会社（担当）", form.brokerCharge))
-							if (isLength(100, "仲介会社（連絡先）", form.brokerContact))
-								if (isLength(100, "内装担当者", form.interiorCharge))
+		if (!fnYMDCheck("正しい届出期日", form.leavingDT)) { return; }
+	if (isLength(100, "管理会社", form.manageCompany))
+		if (isLength(100, "管理室", form.floorPlan))
+			if (isLength(100, "前所有者", form.formerOwner))
+				if (isLength(100, "仲介会社（担当）", form.brokerCharge))
+					if (isLength(100, "仲介会社（連絡先）", form.brokerContact))
+						if (isLength(100, "内装担当者", form.interiorCharge))
 
-									if (confirm('この内容で登録します。よろしいですか？')) {
-										form.act.value = 'constEditComplete';
-										form.submit();
-									}
+							if (confirm('この内容で登録します。よろしいですか？')) {
+								form.act.value = 'constEditComplete';
+								form.submit();
+							}
 }
