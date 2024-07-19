@@ -86,7 +86,7 @@ function fnGuideMove(muki, articleNo) {
 		tags += "<td>" + articleRoom + "</td>";
 
 		// 鍵情報の作成
-		tags += "<td>" + articleKey;
+		tags += "<td>" + articleKey + "</td>";
 		tags += "</tr>";
 
 		// 登録側に追加
@@ -111,7 +111,7 @@ function fnGuideMove(muki, articleNo) {
 		tags += "<td>" + $(obj.children()[3]).html() + "</td>";
 
 		// 登録ボタンの作成
-		tags += "<td><input type=\"button\" value=\"&gt;\" /></td>";
+		tags += "<td><input type=\"button\" value=\"&gt;\"  onClick=\"fnGuideMove( 'toRight', '" + articleNo + "' );\" /></td>";
 		tags += "</tr>";
 
 		// 検索側に追加
